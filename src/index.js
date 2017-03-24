@@ -1,38 +1,37 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import './index.css';
 import Root from './Root';
+import configureStore from './store/configureStore';
+import DevTools from './containers/DevTools';
 
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-
-// relative path
-import reducer from './reducers'
-
-// create the saga middleware
-const sagaMiddleware = createSagaMiddleware()
-// mount it on the Store
-const store = createStore(
-  reducer,
-  applyMiddleware(sagaMiddleware)
-)
-
-// then run the saga
-// sagaMiddleware.run(mySaga)
+const store = configureStore();
 
 const renderAll = (Root) => render(
-	(<Provider store={store}>
-  		<Root/>
-  	</Provider>),
+    (<Provider store={store}>
+        <div>
+            <Root/>
+            <DevTools/>
+        </div>
+    </Provider>),
   document.getElementById('root')
 );
 
 module.hot.accept('./Root', () => {
-	const Root = require('./Root').default;
-	renderAll(Root);
+    const Root = require('./Root').default;
+    renderAll(Root);
 });
 
 renderAll(Root);
 
+// const func11 = function* func1(){
+//  console.log("generator!!!111")
+// }
+// func11().next();
+
+// (async function func222(){
+//  await console.log("async func!!!!")
+// })();

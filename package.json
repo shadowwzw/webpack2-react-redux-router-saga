@@ -23,11 +23,15 @@
     "eslint-plugin-react": "^6.10.3",
     "install": "^0.8.7",
     "npm": "^4.4.1",
+    "redux-devtools": "^3.3.2",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.2.0",
     "style-loader": "^0.13.2",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",

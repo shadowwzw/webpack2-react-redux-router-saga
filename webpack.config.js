@@ -29,6 +29,7 @@ console.log('path.join(__dirname, ".eslintrc.json")', path.join(__dirname, ".esl
 module.exports = {
   entry: {
     app: [
+    "babel-polyfill",
     "webpack-dev-server/client?" + (config.clientUrl || config.defaultClientUrl),
     "./src/index",
     ]
@@ -39,20 +40,6 @@ module.exports = {
       filename: "bundle.js",
   },
   module: {
-      // loaders: [
-      //     {
-      //         test: /\.js$/,
-      //         loader: "babel-loader",
-      //         exclude: /node_modules/,
-      //         query: {
-      //             presets: ["es2015", "react"]
-      //         }
-      //     },
-      //     {
-      //         test: /\.css$/,
-      //         loader: "style-loader!css-loader?modules=true",
-      //     }
-      // ],
       rules: [
         {
           test: /\.js$/,
