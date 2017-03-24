@@ -76,6 +76,16 @@ module.exports = {
                 localIdentName: '[path][name]__[local]--[hash:base64:5]',
               }
             },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: function () {
+                  return [
+                    require('autoprefixer')
+                  ];
+                }
+              }
+            }
           ],
         },
       ]
