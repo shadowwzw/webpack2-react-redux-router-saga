@@ -21,8 +21,10 @@
 
 var path = require('path');
 var config = require('./config');
+var eslintConfig = require('./.eslintrc');
 
 console.log('path.join(__dirname, "public")', path.join(__dirname, "public"))
+console.log('path.join(__dirname, ".eslintrc.json")', path.join(__dirname, ".eslintrc.json"))
 
 module.exports = {
   entry: {
@@ -55,6 +57,12 @@ module.exports = {
         {
           test: /\.js$/,
           exclude: /node_modules/,
+          loader: "eslint-loader",
+          enforce: "pre",
+        },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
@@ -75,7 +83,7 @@ module.exports = {
               }
             },
           ],
-        }
+        },
       ]
   },
   devServer: {
