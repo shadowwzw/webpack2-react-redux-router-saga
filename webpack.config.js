@@ -18,6 +18,11 @@
 //   pathname: urlParts.path == null || urlParts.path === "/" ? "/sockjs-node" : urlParts.path
 // });
 
+var webpack = require('webpack');
+
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+const isDev = process.env.NODE_ENV === 'DEVELOPMENT';
+
 
 var path = require('path');
 var config = require('./config');
@@ -36,24 +41,24 @@ module.exports = {
   },
   // entry: "./src/index",
   output: {
-      path: __dirname + "/public",
+      path: __dirname + (isDev ? "/public" : "/build"),
       filename: "bundle.js",
   },
   module: {
       rules: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loader: "eslint-loader",
-          // enforce: "pre",
-          options: {
-            quiet: true,
-            failOnError: false,
-            failOnWarning: false,
-            emitError: false,
-            emitWarning: false
-          }
-        },
+        // {
+        //   test: /\.js$/,
+        //   exclude: /node_modules/,
+        //   loader: "eslint-loader",
+        //   // enforce: "pre",
+        //   options: {
+        //     quiet: true,
+        //     failOnError: false,
+        //     failOnWarning: false,
+        //     emitError: false,
+        //     emitWarning: false
+        //   }
+        // },
         {
           test: /\.js$/,
           exclude: /node_modules/,
@@ -97,5 +102,10 @@ module.exports = {
     historyApiFallback: true,
     publicPath: config.rootPath,
     host: "0.0.0.0",
-  }
+  },
+  plugins: [
+      new webpack.DefinePlugin({
+        PRODUCTION: JSON.stringify(!isDev),
+      })
+  ]
 };
