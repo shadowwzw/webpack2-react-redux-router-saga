@@ -1,0 +1,31 @@
+{
+  "name": "webpack-with-lite-dev-server-babel-koa-react",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"node index.js\" \"webpack -w\" \"nodemon ./api-on-koa/index.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gavrilov Ruslan shadowwzw <miditab@yandex.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "concurrently": "^3.4.0",
+    "css-loader": "^0.26.2",
+    "lite-dev-server": "^0.2.13",
+    "nodemon": "^1.11.0",
+    "style-loader": "^0.13.2",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "koa": "^2.0.1",
+    "koa-router": "^7.0.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
