@@ -27,7 +27,7 @@ console.log('path.join(__dirname, "public")', path.join(__dirname, "public"))
 module.exports = {
   entry: {
     app: [
-    "webpack-dev-server/client?" + config.clientUrl || config.defaultClientUrl,
+    "webpack-dev-server/client?" + (config.clientUrl || config.defaultClientUrl),
     "./src/index",
     ]
   },
@@ -65,7 +65,15 @@ module.exports = {
         },
         {
           test: /\.css$/,
-          use: [ 'style-loader', 'css-loader' ],
+          use: [
+           'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+              }
+            },
+          ],
         }
       ]
   },
