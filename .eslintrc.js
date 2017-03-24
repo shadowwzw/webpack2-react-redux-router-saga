@@ -11,7 +11,8 @@ module.exports = {
   "env": {
     "node": true,
     "mocha": true,
-    "es6": true
+    "es6": true,
+    "browser": true,
   },
   "rules": {
     "prefer-const": 2,

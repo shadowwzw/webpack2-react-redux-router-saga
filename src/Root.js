@@ -9,7 +9,7 @@ const browserHistory = useBasename(createHistory)({
   basename: config.rootPath,
 })
 
-const Root = (props) => (
+const Root = () => (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         
