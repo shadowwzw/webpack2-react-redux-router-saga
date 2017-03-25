@@ -43,13 +43,14 @@ const pluginsArray = [
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }),
       new HtmlWebpackPlugin({
+        inject: false,
         filename: 'index.html',
         template: 'public/index.html',
       }),
   ];
 
 if (isDev) {
-  entryAppArray.unshift("webpack-dev-server/client?" + (config.clientUrl || config.defaultClientUrl));
+  entryAppArray.unshift("webpack-dev-server-fork/client?" + (config.clientUrl || config.defaultClientUrl));
 }
 
 if (!isDev) {
