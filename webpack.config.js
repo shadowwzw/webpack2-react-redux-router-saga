@@ -125,4 +125,5 @@ module.exports = {
     host: "0.0.0.0",
   },
   plugins: pluginsArray,
+  devtool: isDev ? "eval": false,
 };
