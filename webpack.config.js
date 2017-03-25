@@ -106,6 +106,7 @@ module.exports = {
   plugins: [
       new webpack.DefinePlugin({
         PRODUCTION: JSON.stringify(!isDev),
+        DEVELOPMENT: JSON.stringify(isDev),
       })
   ]
 };

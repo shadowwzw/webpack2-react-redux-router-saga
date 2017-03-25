@@ -5,24 +5,36 @@ import { Provider } from 'react-redux';
 import './index.css';
 import Root from './Root';
 import configureStore from './store/configureStore';
-import DevTools from './containers/DevTools';
 
 const store = configureStore();
 
-const renderAll = (Root) => render(
-    (<Provider store={store}>
-        <div>
-            <Root/>
-            <DevTools/>
-        </div>
-    </Provider>),
-  document.getElementById('root')
-);
+let renderAll;
 
-module.hot.accept('./Root', () => {
-    const Root = require('./Root').default;
-    renderAll(Root);
-});
+if (DEVELOPMENT) {
+    const DevTools = require('./containers/DevTools').default;
+    renderAll = (Root) => render(
+        (<Provider store={store}>
+            <div>
+                <Root/>
+                <DevTools />
+            </div>
+        </Provider>),
+      document.getElementById('root')
+    );
+    module.hot.accept('./Root', () => {
+        const Root = require('./Root').default;
+        renderAll(Root);
+    });
+} else {
+	renderAll = (Root) => render(
+	    (<Provider store={store}>
+	        <div>
+	            <Root/>
+	        </div>
+	    </Provider>),
+	  document.getElementById('root')
+	);
+}
 
 renderAll(Root);
 
