@@ -19,4 +19,8 @@ module.exports = {
     "no-console": 0
   },
   "parser": "babel-eslint",
+  "globals": {
+    "PRODUCTION": true,
+    "DEVELOPMENT": true
+  },
 }

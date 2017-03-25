@@ -46,19 +46,19 @@ module.exports = {
   },
   module: {
       rules: [
-        // {
-        //   test: /\.js$/,
-        //   exclude: /node_modules/,
-        //   loader: "eslint-loader",
-        //   // enforce: "pre",
-        //   options: {
-        //     quiet: true,
-        //     failOnError: false,
-        //     failOnWarning: false,
-        //     emitError: false,
-        //     emitWarning: false
-        //   }
-        // },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: "eslint-loader",
+          // enforce: "pre",
+          options: {
+            quiet: true,
+            failOnError: false,
+            failOnWarning: false,
+            emitError: false,
+            emitWarning: false
+          }
+        },
         {
           test: /\.js$/,
           exclude: /node_modules/,

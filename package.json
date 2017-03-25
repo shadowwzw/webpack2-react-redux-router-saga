@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=DEVELOPMENT webpack-dev-server --hot --inline",
-    "build": "NODE_ENV=DEVELOPMENT webpack",
+    "build": "NODE_ENV=PRODUCTION webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gavrilov Ruslan shadowwzw <miditab@yandex.ru>",
