@@ -21,7 +21,7 @@
 var webpack = require('webpack');
 
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
-const isDev = process.env.NODE_ENV === 'DEVELOPMENT';
+const isDev = process.env.NODE_ENV === 'development';
 
 
 var path = require('path');
@@ -110,8 +110,7 @@ module.exports = {
   },
   plugins: [
       new webpack.DefinePlugin({
-        production: JSON.stringify(!isDev),
-        development: JSON.stringify(isDev),
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       })
   ]
 };

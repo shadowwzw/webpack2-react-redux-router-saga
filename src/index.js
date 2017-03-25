@@ -10,7 +10,16 @@ const store = configureStore();
 
 let renderAll;
 
-if (development) {
+if (process.env.NODE_ENV === 'production') {
+    renderAll = (Root) => render(
+        (<Provider store={store}>
+            <div>
+                <Root/>
+            </div>
+        </Provider>),
+      document.getElementById('root')
+    );
+} else {
     const DevTools = require('./containers/DevTools').default;
     renderAll = (Root) => render(
         (<Provider store={store}>
@@ -25,15 +34,6 @@ if (development) {
         const Root = require('./Root').default;
         renderAll(Root);
     });
-} else {
-	renderAll = (Root) => render(
-	    (<Provider store={store}>
-	        <div>
-	            <Root/>
-	        </div>
-	    </Provider>),
-	  document.getElementById('root')
-	);
 }
 
 renderAll(Root);
