@@ -1,23 +1,3 @@
-// Need replace in node_modules/webpack-dev-server/client/index.js
-
-// var socketUrl = url.format({
-//  protocol: protocol,
-//  auth: urlParts.auth,
-//  hostname: hostname,
-//  port: (urlParts.port === "0") ? self.location.port : urlParts.port,
-//  pathname: urlParts.path == null || urlParts.path === "/" ? "/sockjs-node" : urlParts.path
-// });
-
-// TO
-
-// var socketUrl = url.format({
-//   protocol: "http:",
-//   auth: urlParts.auth,
-//   hostname: "develop11",
-//   port: "4000",
-//   pathname: urlParts.path == null || urlParts.path === "/" ? "/sockjs-node" : urlParts.path
-// });
-
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
