@@ -20,7 +20,7 @@ module.exports = {
   },
   "parser": "babel-eslint",
   "globals": {
-    "PRODUCTION": true,
-    "DEVELOPMENT": true
+    "production": true,
+    "development": true
   },
 }
