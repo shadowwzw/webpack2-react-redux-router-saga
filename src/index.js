@@ -10,7 +10,7 @@ const store = configureStore();
 
 let renderAll;
 
-if (DEVELOPMENT) {
+if (development) {
     const DevTools = require('./containers/DevTools').default;
     renderAll = (Root) => render(
         (<Provider store={store}>

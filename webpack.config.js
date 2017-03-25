@@ -31,13 +31,18 @@ var eslintConfig = require('./.eslintrc');
 console.log('path.join(__dirname, "public")', path.join(__dirname, "public"))
 console.log('path.join(__dirname, ".eslintrc.json")', path.join(__dirname, ".eslintrc.json"))
 
+const entryAppArray = [
+    "babel-polyfill",
+    "./src/index",
+    ];
+
+if (isDev) {
+  entryAppArray.push("webpack-dev-server/client?" + (config.clientUrl || config.defaultClientUrl));  
+} 
+
 module.exports = {
   entry: {
-    app: [
-    "babel-polyfill",
-    "webpack-dev-server/client?" + (config.clientUrl || config.defaultClientUrl),
-    "./src/index",
-    ]
+    app: entryAppArray,
   },
   // entry: "./src/index",
   output: {
@@ -105,8 +110,8 @@ module.exports = {
   },
   plugins: [
       new webpack.DefinePlugin({
-        PRODUCTION: JSON.stringify(!isDev),
-        DEVELOPMENT: JSON.stringify(isDev),
+        production: JSON.stringify(!isDev),
+        development: JSON.stringify(isDev),
       })
   ]
 };
