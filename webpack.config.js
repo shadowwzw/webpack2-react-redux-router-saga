@@ -19,7 +19,8 @@
 // });
 
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 const isDev = process.env.NODE_ENV === 'development';
@@ -37,8 +38,22 @@ const entryAppArray = [
     "./src/index",
     ];
 
+const pluginsArray = [
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: 'public/index.html',
+      }),
+  ];
+
 if (isDev) {
-  entryAppArray.unshift("webpack-dev-server/client?" + (config.clientUrl || config.defaultClientUrl));  
+  entryAppArray.unshift("webpack-dev-server/client?" + (config.clientUrl || config.defaultClientUrl));
+}
+
+if (!isDev) {
+  pluginsArray.unshift(new UglifyJSPlugin());
 }
 
 module.exports = {
@@ -109,13 +124,5 @@ module.exports = {
     publicPath: config.rootPath,
     host: "0.0.0.0",
   },
-  plugins: [
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      }),
-      new HtmlWebpackPlugin({
-        filename: 'index.html',
-        template: 'public/index.html',
-      }),
-  ]
+  plugins: pluginsArray,
 };

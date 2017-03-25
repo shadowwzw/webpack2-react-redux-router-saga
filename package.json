@@ -1,6 +1,6 @@
 {
   "name": "webpack2-react-redux-router-saga",
-  "version": "0.3.1",
+  "version": "0.4.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -31,6 +31,7 @@
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.2.0",
     "style-loader": "^0.13.2",
+    "uglifyjs-webpack-plugin": "^0.3.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2"
   },
