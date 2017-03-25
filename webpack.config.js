@@ -19,6 +19,7 @@
 // });
 
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 const isDev = process.env.NODE_ENV === 'development';
@@ -37,8 +38,8 @@ const entryAppArray = [
     ];
 
 if (isDev) {
-  entryAppArray.push("webpack-dev-server/client?" + (config.clientUrl || config.defaultClientUrl));  
-} 
+  entryAppArray.unshift("webpack-dev-server/client?" + (config.clientUrl || config.defaultClientUrl));  
+}
 
 module.exports = {
   entry: {
@@ -111,6 +112,10 @@ module.exports = {
   plugins: [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      })
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: 'public/index.html',
+      }),
   ]
 };
