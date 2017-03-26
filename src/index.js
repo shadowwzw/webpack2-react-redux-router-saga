@@ -1,6 +1,6 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import {render} from 'react-dom';
+import {Provider} from 'react-redux';
 
 import './index.css';
 import Root from './Root';
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
                 <Root/>
             </div>
         </Provider>),
-      document.getElementById('root')
+        document.getElementById('root')
     );
 } else {
     const DevTools = require('./containers/DevTools').default;
@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
                 <DevTools />
             </div>
         </Provider>),
-      document.getElementById('root')
+        document.getElementById('root')
     );
     module.hot.accept('./Root', () => {
         const Root = require('./Root').default;

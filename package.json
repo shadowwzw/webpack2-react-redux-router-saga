@@ -1,6 +1,6 @@
 {
   "name": "webpack2-react-redux-router-saga",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "",
   "main": "index.js",
   "scripts": {

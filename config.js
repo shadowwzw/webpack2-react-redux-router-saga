@@ -1,4 +1,4 @@
 module.exports = {
-	clientUrl: "/",
-	rootPath: "/gavrilov/boxes",
-}
+    clientUrl: "/",
+    rootPath: "/gavrilov/boxes",
+};
