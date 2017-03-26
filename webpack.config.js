@@ -8,6 +8,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 var path = require('path');
 var config = require('./config');
+var defaultConfig = require('./defaultConfig')
 var eslintConfig = require('./.eslintrc');
 
 console.log('path.join(__dirname, "public")', path.join(__dirname, "public"))
@@ -30,7 +31,7 @@ const pluginsArray = [
   ];
 
 if (isDev) {
-  entryAppArray.unshift("webpack-dev-server-fork/client?" + (config.clientUrl || config.defaultClientUrl));
+  entryAppArray.unshift("webpack-dev-server-fork/client?" + (config.clientUrl || defaultConfig.clientUrl));
 }
 
 if (!isDev) {
@@ -102,7 +103,7 @@ module.exports = {
     compress: true,
     port: 4000,
     historyApiFallback: true,
-    publicPath: config.rootPath,
+    publicPath: config.rootPath || defaultConfig.rootPath,
     host: "0.0.0.0",
   },
   plugins: pluginsArray,
