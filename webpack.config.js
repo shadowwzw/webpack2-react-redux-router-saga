@@ -8,11 +8,15 @@ const isDev = process.env.NODE_ENV === 'development';
 
 var path = require('path');
 var config = require('./config');
-var defaultConfig = require('./defaultConfig')
-var eslintConfig = require('./.eslintrc');
+var defaultConfig = require('./defaultConfig');
+var clientUrl = config.clientUrl || defaultConfig.clientUrl;
+var rootPath = config.rootPath || defaultConfig.rootPath;
+var devServerProtocol = config.devServerProtocol || defaultConfig.devServerProtocol;
+var devServerHost = config.devServerHost || defaultConfig.devServerHost;
+var devServerPort = config.devServerPort || defaultConfig.devServerPort;
 
-console.log('path.join(__dirname, "public")', path.join(__dirname, "public"))
-console.log('path.join(__dirname, ".eslintrc.json")', path.join(__dirname, ".eslintrc.json"))
+console.log('path.join(__dirname, "public")', path.join(__dirname, "public"));
+console.log('path.join(__dirname, ".eslintrc.json")', path.join(__dirname, ".eslintrc.json"));
 
 const entryAppArray = [
     "babel-polyfill",
@@ -24,14 +28,13 @@ const pluginsArray = [
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }),
       new HtmlWebpackPlugin({
-        inject: false,
         filename: 'index.html',
         template: 'public/index.html',
       }),
   ];
 
 if (isDev) {
-  entryAppArray.unshift("webpack-dev-server-fork/client?" + (config.clientUrl || defaultConfig.clientUrl));
+  entryAppArray.unshift("webpack-dev-server-fork/client?" + clientUrl);
 }
 
 if (!isDev) {
@@ -42,7 +45,6 @@ module.exports = {
   entry: {
     app: entryAppArray,
   },
-  // entry: "./src/index",
   output: {
       path: __dirname + (isDev ? "/public" : "/build"),
       filename: "bundle.js",
@@ -101,10 +103,15 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "public"),
     compress: true,
-    port: 4000,
+    port: devServerPort,
     historyApiFallback: true,
-    publicPath: config.rootPath || defaultConfig.rootPath,
     host: "0.0.0.0",
+    proxy: !rootPath || rootPath === '/' ? {} : {
+      [rootPath]: {
+      target: devServerProtocol + '://' + devServerHost + ':' + devServerPort,
+      pathRewrite: {["^" + rootPath] : ""},
+      }
+    }
   },
   plugins: pluginsArray,
   devtool: isDev ? "eval": false,
