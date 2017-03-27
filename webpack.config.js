@@ -56,13 +56,13 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "eslint-loader",
-                // enforce: "pre",
+                enforce: "pre",
                 options: {
                     quiet: true,
-                    failOnError: false,
-                    failOnWarning: false,
+                    failOnError: !isDev,
+                    failOnWarning: !isDev,
                     emitError: false,
-                    emitWarning: false
+                    emitWarning: true
                 }
             },
             {
