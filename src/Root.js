@@ -3,7 +3,7 @@ import App from './App';
 import {Router, Route, IndexRoute, Link} from 'react-router'
 import {createHistory, useBasename} from 'history'
 
-import config from '../config';
+import config from '../config/user';
 
 const browserHistory = useBasename(createHistory)({
     basename: config.rootPath,

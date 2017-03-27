@@ -7,8 +7,8 @@ const isDev = process.env.NODE_ENV === 'development';
 
 
 var path = require('path');
-var config = require('./config');
-var defaultConfig = require('./defaultConfig');
+var config = require('./config/user');
+var defaultConfig = require('./config/default');
 var clientUrl = config.clientUrl || defaultConfig.clientUrl;
 var rootPath = config.rootPath || defaultConfig.rootPath;
 var devServerProtocol = config.devServerProtocol || defaultConfig.devServerProtocol;
