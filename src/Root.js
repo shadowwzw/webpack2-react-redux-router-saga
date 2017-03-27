@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './App';
-import {Router, Route, IndexRoute, Link} from 'react-router'
+import {Router, Route} from 'react-router'
 import {createHistory, useBasename} from 'history'
 
 import config from '../config/user';
