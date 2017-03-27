@@ -72,7 +72,11 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ["es2015", "react"],
-                        plugins: [require('babel-plugin-transform-object-rest-spread')]
+                        plugins: [
+                            require('babel-plugin-transform-object-rest-spread'),
+                            require('babel-plugin-transform-class-properties'),
+                            require('babel-plugin-transform-async-to-generator'),
+                        ]
                     }
                 }
             },
