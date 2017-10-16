@@ -41,11 +41,13 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
+    "node-sass-with-bindings": "^4.5.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
-    "redux-saga": "^0.14.3"
+    "redux-saga": "^0.14.3",
+    "sass2-loader": "^6.0.9"
   }
 }

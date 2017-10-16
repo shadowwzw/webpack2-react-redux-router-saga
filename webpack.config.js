@@ -81,27 +81,14 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: function () {
-                                return [
-                                    require('autoprefixer')
-                                ];
-                            }
-                        }
-                    }
-                ],
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "sass2-loader" // compiles Sass to CSS
+                }]
             },
         ]
     },
